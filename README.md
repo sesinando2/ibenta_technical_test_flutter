@@ -160,7 +160,7 @@ Bonus: Implement some form of automated testing.
                 }
             ```
 
-Bonus: Implement pagination.
+Bonus: Implement infinite scrolling or paging.
 
 # ibenta_technical_test_flutter
 
