@@ -27,17 +27,15 @@ Tools • Dart 2.13.0
     1. `First Name` - This is a required text field.
     1. `Last Name` - This is a required text field
     1. `Password` - This is a required password field.
-1. Add a help text for each field.
-1. Also add a text place holder on each field.
 1. Add a validation for the fields. Please refer to the field definition above.
 1. Add a submit button. Clicking this button will display an alert/notification that the user has been added.
 
 ---
 
 #### Level 2:
-1. Create a table below the form that will display all the users that has been created.
+1. Create another screen all existing users.
 1. Implement a delete functionality that will remove previously added user.
-1. When the table is empty, display a message indicating the user that they need to add a user first.
+1. When the list is empty, display a message indicating the user that they need to add a user first.
 1. Implement an edit functionality that will allow user to edit existing users from the table.
 
 Bonus: Implement some form of automated testing.
@@ -47,23 +45,23 @@ Bonus: Implement some form of automated testing.
 #### Level 3:
 1. Do all steps in Level 1 & Level 2
 1. Implement an API client with the following details:
-    * Base URL is `http://authentication-service.jx-ibenta-authentication-service-pr-15.ibenta.com/api`
+    * Base URL is `https://authentication-service-pr45.gitops.ibenta.com/api`
     * Will use `OAuth2` for security. OAuth2 details are as follows:
         * Grant Type: `Client Credentials`
-        * Access Token URL: `http://authentication-service.jx-ibenta-authentication-service-pr-15.ibenta.com/oauth/token`
+        * Access Token URL: `https://authentication-service-pr45.gitops.ibenta.com/oauth/token`
         * Client ID: `AITWD1zyBVuPWgn4ZBHSREtXJDZXL9Lt`
         * Client Secret: `ELEGpyarKD0OWDrzfiqWqmpkOb4FSKnb`
         * Scope: `read write`
 1. Use this client to:
     1. Create new users:
-        * Request: `POST http://authentication-service.jx-ibenta-authentication-service-pr-15.ibenta.com/api/users`
+        * Request: `POST https://authentication-service-pr45.gitops.ibenta.com/api/users`
         * Request Body:
             ```
                 {
                     "name": "jon.jones@ibenta.com.au",
                     "firstName": "Jon",
                     "lastName": "Jones",
-                    "email": "jon.jones@ibenta.com.au"
+                    "email": "jon.jones@ibenta.com.au",
                     "password": "Password1"
                 }
             ```
@@ -84,14 +82,14 @@ Bonus: Implement some form of automated testing.
                 }
             ```
     1. Update existing users:
-        * Request: `PUT http://authentication-service.jx-ibenta-authentication-service-pr-15.ibenta.com/api/users/{id}`
+        * Request: `PUT https://authentication-service-pr45.gitops.ibenta.com/api/users/{id}`
         * Request Body:
             ```
                 {
                     "name": "jon.jones@ibenta.com.au",
                     "firstName": "Jon",
                     "lastName": "Jones",
-                    "email": "jon.jones@ibenta.com.au"
+                    "email": "jon.jones@ibenta.com.au",
                     "password": "Password1"
                 }
             ```
@@ -112,10 +110,10 @@ Bonus: Implement some form of automated testing.
                 }
             ```
     1. Delete existing user:
-        * Request: `DELETE http://authentication-service.jx-ibenta-authentication-service-pr-15.ibenta.com/api/users/{id}`
+        * Request: `DELETE https://authentication-service-pr45.gitops.ibenta.com/api/users/{id}`
         * Response: `HTTP 204`
     1. List all users:
-        * Request: `GET http://authentication-service.jx-ibenta-authentication-service-pr-15.ibenta.com/api/users`
+        * Request: `GET https://authentication-service-pr45.gitops.ibenta.com/api/users`
         * Response: `HTTP 200`
         * Response Body: Note ignore permission, roles, groups and organisation
             ```
