@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.brown,
+        accentColor: Colors.black,
       ),
       home: UsersPage(),
     );

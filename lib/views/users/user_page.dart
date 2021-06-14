@@ -157,6 +157,11 @@ class _UserPageState extends State<UserPage> {
             Expanded(
               child: ElevatedButton(
                 child: Text(widget.user == null ? "Submit" : 'Update'),
+                style: ButtonStyle(
+                  backgroundColor: _isProcessing
+                      ? MaterialStateProperty.all<Color>(Colors.grey)
+                      : MaterialStateProperty.all<Color>(Colors.black),
+                ),
                 onPressed: _isProcessing
                     ? null
                     : () async {

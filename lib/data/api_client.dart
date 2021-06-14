@@ -11,7 +11,7 @@ class ApiClient {
   dynamic get(String path) async {
     final response = await _client.get(
       Uri.parse('${ApiConstants.BASE_URL}$path'),
-      headers: {'Content-Type': 'application-json'},
+      headers: {'Content-Type': 'application/json;charset=UTF-8'},
     );
 
     if (response.statusCode == 200) {
@@ -68,7 +68,6 @@ class ApiClient {
     if (response.statusCode == 200) {
       return json.decode(response.body);
     } else {
-      print(response.statusCode);
       throw Exception(response.reasonPhrase);
     }
   }

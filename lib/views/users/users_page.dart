@@ -46,9 +46,9 @@ class _UsersPageState extends State<UsersPage> {
         future: _getUsers(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            if (snapshot.data!.isEmpty) {
+            if (snapshot.data?.isEmpty ?? true) {
               return Center(
-                child: Text("No users found"),
+                child: Text("No users found. Please add your first user"),
               );
             }
             return ListView.separated(
@@ -60,6 +60,9 @@ class _UsersPageState extends State<UsersPage> {
               itemBuilder: (context, index) {
                 final user = snapshot.data![index];
                 return ListTile(
+                  leading: CircleAvatar(
+                    child: Text("${user.firstName[0]}${user.lastName[0]}"),
+                  ),
                   title: Text(user.userName),
                   subtitle: Text(user.email),
                   onTap: () async {
@@ -77,6 +80,7 @@ class _UsersPageState extends State<UsersPage> {
                       setState(() {});
                     }
                   },
+                  trailing: Icon(Icons.chevron_right),
                 );
               },
             );
@@ -95,6 +99,7 @@ class _UsersPageState extends State<UsersPage> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
+        backgroundColor: Colors.black,
         onPressed: () async {
           final didCreate = await Navigator.of(context).push<bool>(
             MaterialPageRoute(
