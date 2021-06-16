@@ -24,17 +24,26 @@ class _UsersPageState extends State<UsersPage> {
   }
 
   Future<void> _setupRepository() async {
+    _repository = await _getRepository();
+  }
+
+  Future<UsersRepository> _getRepository() async {
+    if (_repository != null) {
+      return Future.value(_repository);
+    }
+
     final client = await oauth2.clientCredentialsGrant(
       Uri.parse(ApiConstants.ACCESS_TOKEN_URL),
       ApiConstants.CLIENT_ID,
       ApiConstants.CLIENT_SECRET,
       scopes: ['read', 'write'],
     );
-    _repository = UsersRepository(ApiClient(client));
+
+    return UsersRepository(ApiClient(client));
   }
 
   Future<List<User>> _getUsers() async {
-    final users = await _repository?.getUsers();
+    final users = (await _getRepository()).getUsers();
     return users!;
   }
 
